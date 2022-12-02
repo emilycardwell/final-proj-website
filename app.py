@@ -9,7 +9,7 @@ a = columns[0].text_input("Input Chord 1", 'C')
 b = columns[0].text_input("Input Chord 2", 'A7')
 c = columns[0].text_input("Input Chord 3", 'F')
 
-input_chords = [a, b, c]
+input_chords = f'{a},{b},{c}'
 
 
 '''
@@ -23,6 +23,6 @@ def call_api(input_chords):
     response = requests.get(url, params=parameters)
     return response.json()
 
-st.text(f'your chord progression: {input_chords}...')
+st.text(f'Your chord progression: {a}, {b}, {c}...')
 st.text("Your next chord:")
 st.text(call_api(input_chords))
