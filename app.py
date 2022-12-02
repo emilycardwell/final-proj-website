@@ -23,6 +23,5 @@ def call_api(input_chords):
     response = requests.get(url, params=parameters)
     return response.json()
 
-st.text(f'Your chord progression: {a}, {b}, {c}...')
-st.text("Your next chord:")
+st.text(f'Your chord progression: {a}, {b}, {c}')
 st.text(call_api(input_chords))
