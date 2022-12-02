@@ -17,7 +17,7 @@ input_chords = [a, b, c]
 '''
 @st.cache
 def call_api(input_chords):
-    url = 'https://final-project-api-zkfrzn26zq-ue.a.run.app/predict'
+    url = 'https://chords-prog-proj-1-zkfrzn26zq-ew.a.run.app'
     parameters = {'chords': input_chords}
 
     response = requests.get(url, params=parameters)
