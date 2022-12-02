@@ -9,7 +9,7 @@ a = columns[0].text_input("Input Chord 1", 'C')
 b = columns[0].text_input("Input Chord 2", 'A7')
 c = columns[0].text_input("Input Chord 3", 'F')
 
-d = a + "-" + b + "-" + c
+d = [a, b, c]
 
 
 '''
@@ -17,7 +17,7 @@ d = a + "-" + b + "-" + c
 '''
 @st.cache
 def call_api(chords):
-    url = 'https://final-project-api-zkfrzn26zq-ue.a.run.app/predict'
+    url = 'http://localhost:8000/'
     parameters = {'chords': chords}
 
     response = requests.get(url, params=parameters)
