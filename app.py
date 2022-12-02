@@ -6,8 +6,8 @@ import requests
 '''
 columns = st.columns(3)
 a = columns[0].text_input("Input Chord 1", 'C')
-b = columns[0].text_input("Input Chord 2", 'G')
-c = columns[0].text_input("Input Chord 3", 'C')
+b = columns[1].text_input("Input Chord 2", 'G')
+c = columns[2].text_input("Input Chord 3", 'C')
 
 input_chords = f'{a},{b},{c}'
 
