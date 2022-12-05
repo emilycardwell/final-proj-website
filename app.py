@@ -7,10 +7,9 @@ import numpy as np
 '''
 
 a = st.text_input("Input 1-12 chords", 'C,D,Em')
-a.replace(' ', '')
-a.replace('...', '')
+b = a.replace(' ', '')
 
-input_chords = f'{a}'
+input_chords = f'{b}'
 
 variation = st.slider('How common of a chord progression would you like?', 1, 10, 3)
 
