@@ -23,7 +23,11 @@ def call_api(input_chords):
     url = 'https://chords-prog-proj-1-zkfrzn26zq-ew.a.run.app/predict'
     parameters = {'input_chords': input_chords}
 
-    response = requests.get(url, params=parameters).json()
+    try:
+        response = requests.get(url, params=parameters).json()
+    except:
+        response = 'Input Error, try again.'
+        
     return response
 
 if st.button('Get your prediction'):
