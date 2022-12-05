@@ -26,8 +26,8 @@ def call_api(input_chords):
     try:
         response = requests.get(url, params=parameters).json()
     except:
-        response = 'Input Error, try again.'
-        
+        response = '**Input Error, _try again_.**'
+
     return response
 
 if st.button('Get your prediction'):
