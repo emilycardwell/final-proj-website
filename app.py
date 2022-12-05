@@ -6,7 +6,7 @@ import numpy as np
 # Chord Progression Prediction
 '''
 
-a = st.text_input("Input 1-12 chords", 'C,D,Em...')
+a = st.text_input("Input 1-12 chords", 'C,D,Em')
 a.replace(' ', '')
 a.replace('...', '')
 
