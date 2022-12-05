@@ -26,7 +26,7 @@ def call_api(input_chords):
     try:
         response = requests.get(url, params=parameters).json()
     except:
-        response = '**Input Error, _try again_.**'
+        response = st.markdown('**Input Error, _try again_.**')
 
     return response
 
