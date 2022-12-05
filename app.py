@@ -23,8 +23,8 @@ def call_api(input_chords):
     url = 'https://chords-prog-proj-1-zkfrzn26zq-ew.a.run.app/predict'
     parameters = {'input_chords': input_chords}
 
-    response = requests.get(url, params=parameters)
-    return response.json()
+    response = requests.get(url, params=parameters).json()
+    return response
 
 if st.button('Get your prediction'):
     st.text(f'Your chord progression: {input_chords}')
