@@ -5,25 +5,12 @@ import numpy as np
 '''
 # Chord Progression Prediction
 '''
-columns = st.columns(4)
-a = columns[0].text_input("Input Chord 1", 'C')
-b = columns[1].text_input("Input Chord 2", 'G')
-c = columns[2].text_input("Input Chord 3", 'C')
-d = columns[3].text_input("Input Chord 4", 'G')
 
-'''
-## Optional:
-'''
+a = st.text_input("Input 1-12 chords", 'C,D,Em...')
+a.replace(' ', '')
+a.replace('...', '')
 
-e = columns[0].text_input("Input Chord 5", '')
-f = columns[1].text_input("Input Chord 6", '')
-g = columns[2].text_input("Input Chord 7", '')
-h = columns[3].text_input("Input Chord 8", '')
-
-
-input_chords = f'{a},{b},{c},{d}'
-if e != '':
-    input_chords = input_chords + f',{e},{f},{g},{h}'
+input_chords = f'{a}'
 
 variation = st.slider('How common of a chord progression would you like?', 1, 10, 3)
 
