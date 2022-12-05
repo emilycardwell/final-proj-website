@@ -18,7 +18,7 @@ n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13,
 '''
 ---
 '''
-@st.cache
+@st.cache(suppress_st_warning=True)
 def call_api(input_chords):
     url = 'https://chords-prog-proj-1-zkfrzn26zq-ew.a.run.app/predict'
     parameters = {'input_chords': input_chords}
