@@ -3,14 +3,18 @@ import requests
 import numpy as np
 
 '''
-# Chord Prediction Front
+# Chord Progression Prediction
 '''
 columns = st.columns(4)
 a = columns[0].text_input("Input Chord 1", 'C')
 b = columns[1].text_input("Input Chord 2", 'G')
 c = columns[2].text_input("Input Chord 3", 'C')
 d = columns[3].text_input("Input Chord 4", 'G')
-st.text('Optional:')
+
+'''
+## Optional:
+'''
+
 e = columns[0].text_input("Input Chord 5", '')
 f = columns[1].text_input("Input Chord 6", '')
 g = columns[2].text_input("Input Chord 7", '')
@@ -26,7 +30,7 @@ variation = st.slider('How common of a chord progression would you like?', 1, 10
 n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'))
 
 '''
-## Prediction
+---
 '''
 @st.cache
 def call_api(input_chords):
@@ -36,5 +40,7 @@ def call_api(input_chords):
     response = requests.get(url, params=parameters)
     return response.json()
 
-st.text(f'Your chord progression: {input_chords}')
-st.text(call_api(input_chords))
+if st.button('Get your prediction'):
+    st.text(f'Your chord progression: {input_chords}')
+    st.text(call_api(input_chords))
+    st.balloons()
