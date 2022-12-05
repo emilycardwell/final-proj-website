@@ -18,7 +18,6 @@ n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13,
 '''
 ---
 '''
-a = 0
 @st.cache(suppress_st_warning=True)
 def call_api(input_chords):
     url = 'https://chords-prog-proj-1-zkfrzn26zq-ew.a.run.app/predict'
@@ -28,14 +27,9 @@ def call_api(input_chords):
         response = requests.get(url, params=parameters).json()
     except:
         response = 'Input Error, try again'
-        a = 1
 
     return response
 
 if st.button('Get your prediction'):
     st.text(f'Your chord progression: {input_chords}')
     st.text(call_api(input_chords))
-    if a == 0:
-        st.balloons()
-    else:
-        pass
