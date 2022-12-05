@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import numpy as np
 
 '''
 # Chord Prediction Front
@@ -20,6 +21,9 @@ input_chords = f'{a},{b},{c},{d}'
 if e != '':
     input_chords = input_chords + f',{e},{f},{g},{h}'
 
+variation = st.slider('How common of a chord progression would you like?', 1, 10, 3)
+
+n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'))
 
 '''
 ## Prediction
