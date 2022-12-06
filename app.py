@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import base64
 import numpy as np
 
 # Background Image
