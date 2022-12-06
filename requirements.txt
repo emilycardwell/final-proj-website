@@ -4,3 +4,4 @@ numpy
 pygame
 music21
 mingus
+MuseScore
