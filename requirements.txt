@@ -1,0 +1,5 @@
+streamlit
+requests
+numpy
+base64
+annotated_text
