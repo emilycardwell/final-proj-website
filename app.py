@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import numpy as np
-import base64
 
 # Background Image
 def add_bg_from_local(image_file):
