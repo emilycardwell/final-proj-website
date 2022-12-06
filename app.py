@@ -9,19 +9,20 @@ import numpy as np
 a = st.text_input("Input 1-12 chords", 'C,D,Em')
 b = a.replace(' ', '')
 
-input_chords = f'{b}'
-
-variation = st.slider('How common of a chord progression would you like?', 1, 10, 3)
+song = f'{b}'
 
 n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'))
+
+randomness = st.slider('How common of a chord progression would you like?', 1, 10, 3)
+
 
 '''
 ---
 '''
 @st.cache(suppress_st_warning=True)
-def call_api(input_chords):
-    url = 'https://chords-prog-proj-1-zkfrzn26zq-ew.a.run.app/predict'
-    parameters = {'input_chords': input_chords}
+def call_api(song, n_chords, randomness):
+    url = 'https://chords-progression-prediction-1-zkfrzn26zq-ew.a.run.app/predict'
+    parameters = {'song': song, 'n_chords': n_chords, 'randomness': randomness}
 
     try:
         response = requests.get(url, params=parameters).json()
@@ -31,5 +32,6 @@ def call_api(input_chords):
     return response
 
 if st.button('Get your prediction'):
-    st.text(f'Your chord progression: {input_chords}')
-    st.text(call_api(input_chords))
+    st.text(call_api(song, n_chords, randomness))
+
+
