@@ -60,4 +60,5 @@ def call_api(song, n_chords, randomness):
 if st.button('Get your prediction'):
     new_text3 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">New chord progression:</p>'
     st.markdown(new_text3, unsafe_allow_html=True)
-    st.text(call_api(song, n_chords, randomness))
+    new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 40px;">{call_api(song, n_chords, randomness)}</p>'
+    st.markdown(new_text4, unsafe_allow_html=True)
