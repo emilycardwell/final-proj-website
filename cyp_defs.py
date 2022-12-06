@@ -1,7 +1,3 @@
-import streamlit as st
-from pygame import mixer
-import requests
-import numpy as np
 from music21 import stream
 from music21 import chord
 from mingus.core import chords
