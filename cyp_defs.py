@@ -15,30 +15,20 @@ def convert_chord_into_staff_and_midi_file(chords):
     array_of_chord = get_notes(chords)
     s = stream.Stream()
 
-    for i, b in enumerate(array_of_chord):
+    for b in array_of_chord:
         c = chord.Chord(b)
         c.duration.quarterLength = 2.0
         s.append(c)
 
     local_path = os.getcwd()
     filename = "input_chords"
-    #midi_file = s.write('midi',fp=f'{local_path}/{filename}.midi')
     my_image_file = f'{local_path}/{filename}'
     my_image_file_path = f'{local_path}/{filename}-1.png'
-    #s = converter.parse(midi_file)
     my_midi_path_file = f'{my_image_file}.midi'
-    my_midi_file = s.write('midi',fp=my_midi_path_file)
+    s.write('midi',fp=my_midi_path_file)
     s.show('musicxml.png',fp=my_image_file,app=False)
     return my_image_file_path,my_midi_path_file
 
-
-def midi_to_wav(midi_file):
-    local_path = os.getcwd()
-    filename = "input_chords"
-    wav_file = midi_file.replace('.midi', '.wav')
-    wav_path_dir = f'{local_path}/{filename}'
-    wav_path_file = f'{wav_path_dir}.wav'
-    return wav_path_file
 
 
 # @st.cache(suppress_st_warning=True)
