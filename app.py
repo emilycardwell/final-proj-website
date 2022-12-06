@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 import numpy as np
 import base64
-from annotated_text import annotated_text
 
 # Background Image
 def add_bg_from_local(image_file):
@@ -21,7 +20,8 @@ def add_bg_from_local(image_file):
     )
 add_bg_from_local('pics/vintage-2721099_1280.jpg')
 
-annotated_text(("Chord Progression Prediction", "#66687f"))
+new_title = '<p style="font-family:sans-serif; color:Black; font-size: 42px;">Chord Progression Prediction</p>'
+st.markdown(new_title, unsafe_allow_html=True)
 
 a = st.text_input("Input 1-12 chords", 'C,D,Em')
 b = a.replace(' ', '')
