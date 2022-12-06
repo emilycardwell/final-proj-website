@@ -2,6 +2,9 @@ import streamlit as st
 import requests
 import base64
 import numpy as np
+from cyp_defs import get_notes, convert_chord_into_staff_and_midi_file, midi_to_wav
+from pygame import mixer
+
 
 # Background Image
 def add_bg_from_local(image_file):
@@ -61,3 +64,26 @@ if st.button('Get your prediction'):
     st.markdown(new_text3, unsafe_allow_html=True)
     new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{call_api(song, n_chords, randomness)["predicted_chord"]}</p>'
     st.markdown(new_text4, unsafe_allow_html=True)
+
+    image_path_return , midi_path_return = convert_chord_into_staff_and_midi_file(call_api(song, n_chords, randomness)["predicted_chord"])
+    st.image(image_path_return)
+    mixer.init()
+    wav_file = midi_to_wav(midi_path_return)
+    music2 = open(wav_file,'wav')
+
+    try:
+        mixer.music.load(music2)
+    except Exception:
+        st.write("Please choose a song")
+
+        if st.button("Play"):
+            mixer.music.play()
+
+        if st.button("Stop"):
+            mixer.music.stop()
+
+        if st.button("Resume"):
+            mixer.music.unpause()
+
+        if st.button("Pause"):
+            mixer.music.pause()
