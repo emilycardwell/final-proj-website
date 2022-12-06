@@ -23,14 +23,23 @@ add_bg_from_local('pics/vintage-2721099_1280.jpg')
 new_title = '<p style="font-family:sans-serif; color:Black; font-size: 42px;">Chord Progression Prediction</p>'
 st.markdown(new_title, unsafe_allow_html=True)
 
-a = st.text_input("Input 1-12 chords", 'C,D,Em')
+new_text = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Input 1 - 12 chords</p>'
+st.markdown(new_text, unsafe_allow_html=True)
+
+a = st.text_input("Input 1-12 chords", 'C,D,Em', label_visibility="collapsed")
 b = a.replace(' ', '')
 
 song = f'{b}'
 
-n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'))
+new_text1 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Select a number of predicted chords.</p>'
+st.markdown(new_text1, unsafe_allow_html=True)
 
-randomness = st.slider('How common of a chord progression would you like?', 1, 10, 3)
+n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'), label_visibility="collapsed")
+
+new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness (1 returns common chords, 10 returns more "interesting" chords).</p>'
+st.markdown(new_text2, unsafe_allow_html=True)
+
+randomness = st.slider('Pick the level of randomness.', 1, 10, 3, label_visibility="collapsed")
 
 
 '''
@@ -49,4 +58,6 @@ def call_api(song, n_chords, randomness):
     return response
 
 if st.button('Get your prediction'):
+    new_text3 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">New chord progression:</p>'
+    st.markdown(new_text3, unsafe_allow_html=True)
     st.text(call_api(song, n_chords, randomness))
