@@ -1,6 +1,5 @@
 import music21
 us = music21.environment.UserSettings()
-us.create()
 us["musicxmlPath"] = "/home/appuser/venv/lib/python3.9/site-packages/musescore"
 us['midiPath'] = "/home/appuser/venv/lib/python3.9/site-packages/musescore"
 
