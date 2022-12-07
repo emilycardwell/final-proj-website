@@ -1,5 +1,5 @@
 import music21 as m21
-from music21 import stream, converter, chord
+from music21 import stream, converter, chord, configure
 from mingus.core import chords
 from music21.musicxml.m21ToXml import ScoreExporter
 import os
@@ -20,6 +20,7 @@ def convert_chord_into_staff_and_midi_file(chords):
         c.duration.quarterLength = 2.0
         s.append(c)
 
+    configure.run()
     # us = m21.environment.UserSettings()
     # us_path = us.getSettingsPath()
     # if not os.path.exists(us_path):
