@@ -1,6 +1,8 @@
+import music21
 from music21 import stream
 from music21 import chord
 from mingus.core import chords
+from music21.musicxml.m21ToXml import ScoreExporter
 import os
 
 
@@ -25,9 +27,11 @@ def convert_chord_into_staff_and_midi_file(chords):
     my_image_file = f'{local_path}/{filename}'
     my_image_file_path = f'{local_path}/{filename}-1.png'
     my_midi_path_file = f'{my_image_file}.midi'
-    s.write('midi',fp=my_midi_path_file, makeNotation=False)
-    s.show('musicxml.png',fp=my_image_file,app=False, makeNotation=False)
+    s.write('midi', fp=my_midi_path_file)
+    s.show('musicxml.png', fp=my_image_file, app=False)
+
     return my_image_file_path,my_midi_path_file
+
 
 
 
