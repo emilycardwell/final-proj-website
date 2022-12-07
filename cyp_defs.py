@@ -1,8 +1,12 @@
+import music21
+music21.environment.set("musicxmlPath", "/home/appuser/venv/lib/python3.9/site-packages/musescore")
+
+import os
 from music21 import stream, chord
 from mingus.core import chords
-import os
 from music21 import converter
 from music21.musicxml.m21ToXml import ScoreExporter
+
 
 def get_notes(chords_input):
     array_of_chord = []
