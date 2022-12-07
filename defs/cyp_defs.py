@@ -4,14 +4,6 @@ from mingus.core import chords
 from music21.musicxml.m21ToXml import ScoreExporter
 import os
 
-us = m21.environment.UserSettings()
-us_path = us.getSettingsPath()
-if not os.path.exists(us_path):
-    us.create()
-
-us['musescoreDirectPNGPath'] = '/usr/bin/mscore'
-us['musicxmlPath'] = '/usr/bin/mscore'
-
 def get_notes(chords_input):
     array_of_chord = []
     for chord in chords_input:
@@ -27,6 +19,14 @@ def convert_chord_into_staff_and_midi_file(chords):
         c = chord.Chord(b)
         c.duration.quarterLength = 2.0
         s.append(c)
+
+    us = m21.environment.UserSettings()
+    us_path = us.getSettingsPath()
+    if not os.path.exists(us_path):
+        us.create()
+
+    us['musescoreDirectPNGPath'] = '/usr/bin/mscore'
+    us['musicxmlPath'] = '/usr/bin/mscore'
 
     # scex = ScoreExporter(s)
     # unused_root = scex.parse()
