@@ -30,14 +30,14 @@ st.markdown(new_title, unsafe_allow_html=True)
 # Input chords
 new_text = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Input 1 - 12 chords</p>'
 st.markdown(new_text, unsafe_allow_html=True)
-a = st.text_input("Input 1-12 chords", 'C,D,Em', label_visibility="collapsed")
+a = st.text_input("Input 1-12 chords", 'C, Dm, G7', label_visibility="collapsed")
 b = a.replace(' ', '')
 song = f'{b}'
 
 # select number of chords to predict
 new_text1 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Select a number of predicted chords.</p>'
 st.markdown(new_text1, unsafe_allow_html=True)
-n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'), label_visibility="collapsed")
+n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 4, 'int'), label_visibility="collapsed")
 
 # randomness slider
 new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness (1 returns common chords, 10 returns more "interesting" chords).</p>'
