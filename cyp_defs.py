@@ -20,14 +20,13 @@ def convert_chord_into_staff_and_midi_file(chords):
         c.duration.quarterLength = 2.0
         s.append(c)
 
-    configure.run()
-    # us = m21.environment.UserSettings()
-    # us_path = us.getSettingsPath()
-    # if not os.path.exists(us_path):
-    #     us.create()
+    us = m21.environment.UserSettings()
+    us_path = us.getSettingsPath()
+    if not os.path.exists(us_path):
+        us.create()
 
-    # us['musescoreDirectPNGPath'] = 'dummy_bin'
-    # us['musicxmlPath'] = 'dummy_bin'
+    us['musescoreDirectPNGPath'] = 'dummy_bin'
+    us['musicxmlPath'] = 'dummy_bin'
 
     # scex = ScoreExporter(s)
     # unused_root = scex.parse()
