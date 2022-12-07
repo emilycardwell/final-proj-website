@@ -1,5 +1,8 @@
 import music21
-music21.environment.set("musicxmlPath", "/home/appuser/venv/lib/python3.9/site-packages/musescore")
+us = music21.environment.UserSettings()
+us.create()
+us["musicxmlPath"] = "/home/appuser/venv/lib/python3.9/site-packages/musescore"
+us['midiPath'] = "/home/appuser/venv/lib/python3.9/site-packages/musescore"
 
 import os
 from music21 import stream, chord
@@ -30,8 +33,11 @@ def convert_chord_into_staff_and_midi_file(chords):
     with open('file.xml', 'w+') as f:
         f.write(xml_string)
 
-    midi_file = s.write('midi', fp=f'{os.getcwd()}/test.midi')
-    conv = converter.parse(s.write('midi', fp=f'{os.getcwd()}/test.midi'))
-    image_path_return = conv.write('musicxml.png',fp=f'{os.getcwd()}/test')
+    midi_path = os.path.join(us['midiPath'], 'test.midi')
+    midi_file = s.write('midi', fp=midi_path)
+    conv = converter.parse(s.write('midi', fp=midi_path))
+
+    img_path = os.path.join(us["musicxmlPath"], 'test')
+    image_path_return = conv.write('musicxml.png',fp=img_path)
 
     return image_path_return
