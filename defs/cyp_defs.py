@@ -1,9 +1,9 @@
-import music21
-from music21 import stream
-from music21 import chord
+import music21 as m21
+from music21 import stream, converter, chord
 from mingus.core import chords
 from music21.musicxml.m21ToXml import ScoreExporter
 import os
+
 
 
 def get_notes(chords_input):
@@ -17,22 +17,22 @@ def convert_chord_into_staff_and_midi_file(chords):
     array_of_chord = get_notes(chords)
     s = stream.Stream()
 
-    for b in array_of_chord:
+    for i, b in enumerate(array_of_chord):
         c = chord.Chord(b)
         c.duration.quarterLength = 2.0
         s.append(c)
 
-    local_path = os.getcwd()
-    filename = "input_chords"
-    my_image_file = f'{local_path}/{filename}'
-    my_image_file_path = f'{local_path}/{filename}-1.png'
-    my_midi_path_file = f'{my_image_file}.midi'
-    s.write('midi', fp=my_midi_path_file)
-    s.show('musicxml.png', fp=my_image_file, app=False)
+    scex = ScoreExporter(s)
+    unused_root = scex.parse()
+    xml_string = scex.asBytes().decode('utf-8')
+    with open('file.xml', 'w+') as f:
+        f.write(xml_string)
 
-    return my_image_file_path,my_midi_path_file
+    midi_file = s.write('midi', fp=f'{os.getcwd()}/test.midi')
+    conv = converter.parse(midi_file)
+    image =conv.write('musicxml.png',fp=f'{os.getcwd()}/test')
 
-
+    return image
 
 
 # @st.cache(suppress_st_warning=True)
