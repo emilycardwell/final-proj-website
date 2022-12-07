@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import base64
 import numpy as np
-from defs.cyp_defs import convert_chord_into_staff_and_midi_file
+from cyp_defs import convert_chord_into_staff_and_midi_file
 from pygame import mixer
 
 
@@ -68,4 +68,3 @@ if st.button('Get your prediction'):
     # chords to midi to staff
     image_path_return , midi_path_return = convert_chord_into_staff_and_midi_file(call_api(song, n_chords, randomness)["predicted_chord"])
     st.image(image_path_return)
-    
