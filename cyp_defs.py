@@ -38,7 +38,7 @@ def convert_chord_into_staff_and_midi_file(chords):
     # conv = converter.parse(midi_file)
     # image = conv.write('musicxml.png',fp=f'{os.getcwd()}/test')
 
-    return s.show('ipython.musicxml.png')
+    return s.show()
 
 
 # @st.cache(suppress_st_warning=True)
