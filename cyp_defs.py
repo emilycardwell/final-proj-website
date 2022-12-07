@@ -25,8 +25,8 @@ def convert_chord_into_staff_and_midi_file(chords):
     if not os.path.exists(us_path):
         us.create()
 
-    us['musescoreDirectPNGPath'] = '/dummy_bin'
-    us['musicxmlPath'] = '/dummy_bin'
+    us['musescoreDirectPNGPath'] = 'dummy_bin'
+    us['musicxmlPath'] = 'dummy_bin'
 
     # scex = ScoreExporter(s)
     # unused_root = scex.parse()
