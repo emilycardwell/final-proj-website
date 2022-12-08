@@ -21,7 +21,7 @@ def add_bg_from_local(image_file):
     """,
     unsafe_allow_html=True
     )
-add_bg_from_local('pics/vintage-2721099_1280_1.jpg')
+add_bg_from_local('pics/vintage-2721099_1280_2.jpeg')
 
 # websit title
 new_title = '<p style="font-family:sans-serif; color:Black; font-size: 42px;">Chord Progression Prediction</p>'
