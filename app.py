@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 import base64
 import numpy as np
-from cyp_defs import convert_chord_into_staff_and_midi_file
-from pygame import mixer
+# from cyp_defs import convert_chord_into_staff_and_midi_file
+# from pygame import mixer
 
 
 # Background Image
@@ -21,7 +21,7 @@ def add_bg_from_local(image_file):
     """,
     unsafe_allow_html=True
     )
-add_bg_from_local('pics/vintage-2721099_1280.jpg')
+add_bg_from_local('pics/vintage-2721099_1280_1.jpg')
 
 # websit title
 new_title = '<p style="font-family:sans-serif; color:Black; font-size: 42px;">Chord Progression Prediction</p>'
@@ -37,7 +37,7 @@ song = f'{b}'
 # select number of chords to predict
 new_text1 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Select a number of predicted chords.</p>'
 st.markdown(new_text1, unsafe_allow_html=True)
-n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'), index=2, label_visibility="collapsed")
+n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'), index=3, label_visibility="collapsed")
 
 # randomness slider
 new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness (1 returns common chords, 10 returns more "interesting" chords).</p>'
