@@ -28,9 +28,9 @@ new_title = '<p style="font-family:sans-serif; color:Black; font-size: 42px;">Ch
 st.markdown(new_title, unsafe_allow_html=True)
 
 # Input chords
-new_text = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Input 1 - 12 chords</p>'
+new_text = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Input 1 - 12 chords (4 or more for best results)</p>'
 st.markdown(new_text, unsafe_allow_html=True)
-a = st.text_input("Input 1-12 chords (4 or more for best results)", 'C, Dm, G7', label_visibility="collapsed")
+a = st.text_input("Input 1-12 chords (4 or more for best results)", 'C, Dm, G7, C', label_visibility="collapsed")
 b = a.replace(' ', '')
 song = f'{b}'
 
