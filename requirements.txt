@@ -1,6 +1,7 @@
 streamlit
 requests
 numpy
+htbuilder
 # pygame
 # music21
 # mingus

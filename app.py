@@ -2,6 +2,10 @@ import streamlit as st
 import requests
 import base64
 import numpy as np
+from htbuilder import HtmlElement, div, ul, li, br, hr, a, p, img, styles, classes, fonts
+from htbuilder.units import percent, px
+from htbuilder.funcs import rgba, rgb
+
 # from cyp_defs import convert_chord_into_staff_and_midi_file
 # from pygame import mixer
 
@@ -71,7 +75,75 @@ if st.button('Get your prediction'):
     except TypeError:
         st.markdown('Chord Input Error, try again (maybe you missed a comma?)')
 
-
     # chords to midi to staff
     # image_path_return = convert_chord_into_staff_and_midi_file(call_api(song, n_chords, randomness)["predicted_chord"])
     # st.image(image_path_return)
+
+
+def image(src_as_string, **style):
+    return img(src=src_as_string, style=styles(**style))
+
+def link(link, text, **style):
+    return a(_href=link, _target="_blank", style=styles(**style))(text)
+
+def layout(*args):
+
+    style = """
+    <style>
+      # MainMenu {visibility: hidden;}
+      footer {visibility: hidden;}
+     .stApp { bottom: 105px; }
+    </style>
+    """
+
+    style_div = styles(
+        position="fixed",
+        left=0,
+        bottom=0,
+        margin=px(0, 0, 0, 0),
+        width=percent(100),
+        color="black",
+        text_align="center",
+        height="auto",
+        opacity=1
+    )
+
+    style_hr = styles(
+        display="block",
+        margin=px(8, 8, "auto", "auto"),
+        border_style="inset",
+        border_width=px(2)
+    )
+
+    body = p()
+    foot = div(
+        style=style_div
+    )(
+        hr(
+            style=style_hr
+        ),
+        body
+    )
+
+    st.markdown(style, unsafe_allow_html=True)
+
+    for arg in args:
+        if isinstance(arg, str):
+            body(arg)
+
+        elif isinstance(arg, HtmlElement):
+            body(arg)
+
+    st.markdown(str(foot), unsafe_allow_html=True)
+
+
+def footer():
+    myargs = [
+        "Created by Emily Cardwell  |  ",
+        link("https://emilycardwell.com", "emilycardwell.com"),
+    ]
+    layout(*myargs)
+
+
+if __name__ == "__main__":
+    footer()
