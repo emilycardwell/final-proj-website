@@ -23,14 +23,14 @@ def add_bg_from_local(image_file):
     )
 add_bg_from_local('pics/vintage-2721099_1280_2.jpeg')
 
-# websit title
+# website title
 new_title = '<p style="font-family:sans-serif; color:Black; font-size: 42px;">Chord Progression Prediction</p>'
 st.markdown(new_title, unsafe_allow_html=True)
 
 # Input chords
 new_text = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Input 1 - 12 chords</p>'
 st.markdown(new_text, unsafe_allow_html=True)
-a = st.text_input("Input 1-12 chords", 'C, Dm, G7', label_visibility="collapsed")
+a = st.text_input("Input 1-12 chords (4 or more for best results)", 'C, Dm, G7', label_visibility="collapsed")
 b = a.replace(' ', '')
 song = f'{b}'
 
@@ -40,7 +40,7 @@ st.markdown(new_text1, unsafe_allow_html=True)
 n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'), index=3, label_visibility="collapsed")
 
 # randomness slider
-new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness (1 returns common chords, 10 returns more "interesting" chords).</p>'
+new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness. 1 returns very simple progressions (I-IV or I-V repeating), 10 returns more "unusual" progressions.</p>'
 st.markdown(new_text2, unsafe_allow_html=True)
 randomness = st.slider('Pick the level of randomness.', 1, 10, 3, label_visibility="collapsed")
 '''
@@ -62,8 +62,12 @@ def call_api(song, n_chords, randomness):
 if st.button('Get your prediction'):
     new_text3 = '<p style="font-family:sans-serif; color:Red; font-size: 24px;">New chord progression:</p>'
     st.markdown(new_text3, unsafe_allow_html=True)
-    new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{call_api(song, n_chords, randomness)["predicted_chord"]}</p>'
-    st.markdown(new_text4, unsafe_allow_html=True)
+    try:
+        new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{call_api(song, n_chords, randomness)["predicted_chord"]}</p>'
+        st.markdown(new_text4, unsafe_allow_html=True)
+    except TypeError:
+        st.markdown('Chord Input Error, try again (maybe you missed a comma?)')
+
 
     # chords to midi to staff
     # image_path_return = convert_chord_into_staff_and_midi_file(call_api(song, n_chords, randomness)["predicted_chord"])
