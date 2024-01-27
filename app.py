@@ -65,7 +65,8 @@ if st.button('Get your prediction'):
     new_text3 = '<p style="font-family:sans-serif; color:Red; font-size: 24px;">New chord(s):</p>'
     st.markdown(new_text3, unsafe_allow_html=True)
     try:
-        new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{list(call_api(song, n_chords, randomness)["predicted_chord"])[-n_chords:]}</p>'
+        chord_string = ', '.join(list(call_api(song, n_chords, randomness)["predicted_chord"])[-n_chords:])
+        new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{chord_string}</p>'
         st.markdown(new_text4, unsafe_allow_html=True)
     except TypeError:
         st.markdown('Chord Input Error, try again (maybe you missed a comma?)')
