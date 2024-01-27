@@ -47,7 +47,7 @@ randomness = st.slider('Pick the level of randomness.', 1, 10, 3, label_visibili
 ---
 '''
 # call API
-@st.cache(suppress_st_warning=True)
+@st.cache_data
 def call_api(song, n_chords, randomness):
     url = 'https://chords-progression-prediction-1-zkfrzn26zq-ew.a.run.app/predict'
     parameters = {'song': song, 'n_chords': n_chords, 'randomness': randomness}
