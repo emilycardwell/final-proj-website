@@ -37,12 +37,12 @@ song = f'{b}'
 # select number of chords to predict
 new_text1 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Select a number of predicted chords.</p>'
 st.markdown(new_text1, unsafe_allow_html=True)
-n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'), index=3, label_visibility="collapsed")
+n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 4, 1, 'int'), index=3, label_visibility="collapsed")
 
 # randomness slider
-new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness:</p>'
+new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Choose a random factor:</p>'
 st.markdown(new_text2, unsafe_allow_html=True)
-new_text2_1 = '<p style="font-family:sans-serif; color:Black; font-size: 12px;">1 returns very simple progressions (I-IV or I-V repeating), 3 returns common progressions, and 10 returns random chords.</p>'
+new_text2_1 = '<p style="font-family:sans-serif; color:Black; font-size: 12px;">Changes hyperparameters for new result</p>'
 st.markdown(new_text2_1, unsafe_allow_html=True)
 randomness = st.slider('Pick the level of randomness:', 1, 10, 3, label_visibility="collapsed")
 '''
@@ -62,10 +62,10 @@ def call_api(song, n_chords, randomness):
     return response
 
 if st.button('Get your prediction'):
-    new_text3 = '<p style="font-family:sans-serif; color:Red; font-size: 24px;">New chord progression:</p>'
+    new_text3 = '<p style="font-family:sans-serif; color:Red; font-size: 24px;">Next chord(s):</p>'
     st.markdown(new_text3, unsafe_allow_html=True)
     try:
-        new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{call_api(song, n_chords, randomness)["predicted_chord"]}</p>'
+        new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{list(call_api(song, n_chords, randomness)["predicted_chord"])[-1]}</p>'
         st.markdown(new_text4, unsafe_allow_html=True)
     except TypeError:
         st.markdown('Chord Input Error, try again (maybe you missed a comma?)')
