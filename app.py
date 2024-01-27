@@ -37,7 +37,7 @@ song = f'{b}'
 # select number of chords to predict
 new_text1 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Select a number of predicted chords.</p>'
 st.markdown(new_text1, unsafe_allow_html=True)
-n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 4, 1, 'int'), index=3, label_visibility="collapsed")
+n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 5, 1, 'int'), index=1, label_visibility="collapsed")
 
 # randomness slider
 new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Choose a random factor:</p>'
