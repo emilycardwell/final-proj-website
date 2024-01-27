@@ -44,7 +44,7 @@ new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Ch
 st.markdown(new_text2, unsafe_allow_html=True)
 new_text2_1 = '<p style="font-family:sans-serif; color:Black; font-size: 12px;">Changes hyperparameters for new result</p>'
 st.markdown(new_text2_1, unsafe_allow_html=True)
-randomness = st.slider('Pick the level of randomness:', 1, 10, 3, label_visibility="collapsed")
+randomness = st.slider('Pick the level of randomness:', 1, 10, 2, label_visibility="collapsed")
 '''
 ---
 '''
