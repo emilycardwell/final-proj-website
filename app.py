@@ -34,8 +34,8 @@ st.markdown(new_title, unsafe_allow_html=True)
 # Input chords
 new_text = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Input 1 - 12 chords (4 or more for best results)</p>'
 st.markdown(new_text, unsafe_allow_html=True)
-a = st.text_input("Input 1-12 chords (4 or more for best results)", 'C, Dm, G7, C', label_visibility="collapsed")
-b = a.replace(' ', '')
+chords_input = st.text_input("Input 1-12 chords (4 or more for best results)", 'C, Dm, G7, C', label_visibility="collapsed")
+b = chords_input.replace(' ', '')
 song = f'{b}'
 
 # select number of chords to predict
@@ -78,10 +78,6 @@ if st.button('Get your prediction'):
     # chords to midi to staff
     # image_path_return = convert_chord_into_staff_and_midi_file(call_api(song, n_chords, randomness)["predicted_chord"])
     # st.image(image_path_return)
-
-
-def image(src_as_string, **style):
-    return img(src=src_as_string, style=styles(**style))
 
 def link(link, text, **style):
     return a(_href=link, _target="_blank", style=styles(**style))(text)
