@@ -37,7 +37,7 @@ song = f'{b}'
 # select number of chords to predict
 new_text1 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Select a number of predicted chords.</p>'
 st.markdown(new_text1, unsafe_allow_html=True)
-n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 5, 1, 'int'), index=1, label_visibility="collapsed")
+n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 5, 1, 'int'), index=0, label_visibility="collapsed")
 
 # randomness slider
 new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Choose a random factor:</p>'
@@ -62,10 +62,10 @@ def call_api(song, n_chords, randomness):
     return response
 
 if st.button('Get your prediction'):
-    new_text3 = '<p style="font-family:sans-serif; color:Red; font-size: 24px;">New chord progression:</p>'
+    new_text3 = '<p style="font-family:sans-serif; color:Red; font-size: 24px;">New chord(s):</p>'
     st.markdown(new_text3, unsafe_allow_html=True)
     try:
-        new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{call_api(song, n_chords, randomness)["predicted_chord"]}</p>'
+        new_text4 = f'<p style="font-family:sans-serif; color:Black; font-size: 20px;">{list(call_api(song, n_chords, randomness)["predicted_chord"])[-n_chords:]}</p>'
         st.markdown(new_text4, unsafe_allow_html=True)
     except TypeError:
         st.markdown('Chord Input Error, try again (maybe you missed a comma?)')
