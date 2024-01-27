@@ -40,7 +40,7 @@ st.markdown(new_text1, unsafe_allow_html=True)
 n_chords = st.selectbox('Select a number of predicted chords.', np.arange(1, 13, 1, 'int'), index=3, label_visibility="collapsed")
 
 # randomness slider
-new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness. 1 returns very simple progressions (I-IV or I-V repeating), 10 returns more "unusual" progressions.</p>'
+new_text2 = '<p style="font-family:sans-serif; color:Black; font-size: 20px;">Pick the level of randomness. 1 returns very simple progressions (I-IV or I-V repeating), 3 returns common progressions, and 10 returns more "unusual" progressions.</p>'
 st.markdown(new_text2, unsafe_allow_html=True)
 randomness = st.slider('Pick the level of randomness.', 1, 10, 3, label_visibility="collapsed")
 '''
