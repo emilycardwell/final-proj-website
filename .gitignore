@@ -1,2 +1,6 @@
-Makefile
+__pycache__
+*checkpoint.ipynb
+*.ipynb_checkpoints
 .DS_Store
+.python-version
+Makefile
