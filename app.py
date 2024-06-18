@@ -4,10 +4,7 @@ import base64
 import numpy as np
 from htbuilder import HtmlElement, div, ul, li, br, hr, a, p, img, styles, classes, fonts
 from htbuilder.units import percent, px
-from htbuilder.funcs import rgba, rgb
 
-# from cyp_defs import convert_chord_into_staff_and_midi_file
-# from pygame import mixer
 
 
 # Background Image
@@ -74,10 +71,6 @@ if st.button('Get your prediction'):
         st.markdown(new_text4, unsafe_allow_html=True)
     except TypeError:
         st.markdown('Chord Input Error, try again (maybe you missed a comma?)')
-
-    # chords to midi to staff
-    # image_path_return = convert_chord_into_staff_and_midi_file(call_api(song, n_chords, randomness)["predicted_chord"])
-    # st.image(image_path_return)
 
 def link(link, text, **style):
     return a(_href=link, _target="_blank", style=styles(**style))(text)
