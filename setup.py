@@ -11,6 +11,6 @@ setup(name='final-project-website',
       license="MIT",
       author="Emily Cardwell",
       author_email="emily@emilycardwell.com",
-      url="https://emilycardwell-final-proj-website-app-klflqz.streamlit.app/",
+      url="https://chord-predict.streamlit.app/",
       install_requires=requirements,
       packages=find_packages())
